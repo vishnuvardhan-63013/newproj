@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+         <h1>Login Here</h1>
+         {% for message in messages %}
+                <div class="message {{ message.tags }}">
+                    <h1 style="color: red;">{{ message }}</h1>
+                </div>
+        {% endfor %}
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <label for="username">Username :</label>
+            <input type="text" name="username" placeholder="Enter Username"><br><br>
+            <label for="Password">Password :</label>
+            <input type="password" name="password" placeholder="Enter Password"><br>
+            <a href="#" style="margin-left: 90px">Forgot Password.....?</a><br><br>
+            <input type="submit" class="btn btn-success" value="login">
+        </form>
+    </div>
+</div>
+
+{% endblock %}
