@@ -84,10 +84,20 @@ WSGI_APPLICATION = 'vspace.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+   'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'myproj',
+        'USER': 'postgres',
+        'PASSWORD': 'root',
+        'HOST' : 'localhost',
+        'PORT': 5432
     }
 }
 
@@ -123,6 +133,9 @@ USE_I18N = True
 USE_TZ = True
 
 
+
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
@@ -131,6 +144,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,"static")
 ]
 
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -138,7 +155,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #auto logout configuration
 AUTO_LOGOUT = {
-    'IDLE_TIME': 10,
+    'IDLE_TIME': 10000000,
     # 'SESSION_TIME': timedelta(minutes=30),
     'MESSAGE': 'The session has expired. Please login again to continue.',
     'REDIRECT_TO_LOGIN_IMMEDIATELY': True,

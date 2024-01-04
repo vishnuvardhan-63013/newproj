@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1><a href="{% url 'addposts' %}"><i class="bi bi-plus" style="margin-left: 1350px; width:100px; height:100px;"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href=""><i class="bi bi-gear"></i></a></h1>
+
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card card-body">
+                   <p> <h1>UserNmae:{{ user.username }}</h1><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16" id="vish" style="margin-left: 600px; margin-bottom  : 100px">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                  </svg>
+                    <h1>Email:{{ user.email }}</h1></p>
+
+                       <h1><a class="btn btn-warning" href="{% url 'appjobs' %}">Applied Jobs</a>
+                        <a class="btn btn-danger" href="#">Posts</a><br><br>
+
+                    
+                                    <h1><div class="vis">
+                                        <a href='https://www.instagram.com/'><i class="bi bi-instagram"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a href="https://www.facebook.com/"><i class="bi bi-facebook"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a href="https://web.whatsapp.com/"><i class="bi bi-whatsapp"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a href="https://twitter.com/i/flow/login"><i class="bi bi-twitter-x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a href="https://in.linkedin.com/"><i class="bi bi-linkedin"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </div></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

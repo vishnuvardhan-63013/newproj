@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from vspaceapp.forms import userform
+from vspaceapp.forms import userform,subscribeform
+from vspaceapp.models import User,subscribe
+from jobapp.models import addpost
 from django.contrib.auth import authenticate,login,logout
 from django.shortcuts import redirect
 from django.http import HttpResponse
@@ -7,6 +9,20 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+@login_required(login_url="login")
+def footer(request):
+    vj = subscribe.objects.all()
+    j = subscribeform()
+    save = False
+    if request.method == 'POST':
+        j = subscribeform(request.POST)
+        if j.is_valid():
+            j.save()
+            save = True
+            print('subscribe success')
+    return render(request,"base.html",{'j':j,'vj':vj,'save':save})
+
+
 def index1(request):
     registered = False
     if request.method == 'POST':
@@ -15,8 +31,7 @@ def index1(request):
             user = form.save(commit=False)
             user.set_password(user.password)
             user.save()
-
-            print('username',form.cleaned_data['username'])
+            print("Successs")
             registered = True
 
     else:
@@ -46,8 +61,26 @@ def index2(request):
 
 @login_required(login_url="login")
 def index3(request):
-    return render(request,"home.html",{})
+    vish = addpost.objects.all().order_by("-view_count")[0:3]
+    vi = addpost.objects.all().order_by("-view_count")[0:1]
+    vis = addpost.objects.all().order_by("-time")[0:3]
+
+    
+    v = subscribe.objects.all()
+    i = subscribeform()
+    saved = False
+    if request.method == 'POST':
+        i = subscribeform(request.POST)
+        if i.is_valid():
+            i.save()
+            saved = True
+            print('subscribe success')
+    return render(request,"home.html",{'vish':vish,'v':v,'i':i,'saved':saved,'vi':vi,'vis':vis})
 
 def user_logout(request):
     logout(request)
     return redirect('login')
+
+def dashboard(request):
+    return render(request,"jobpost/dashboard.html")
+

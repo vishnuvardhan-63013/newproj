@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>{{ details.company }} Company Details :-</h1>
+        <h6>Title :-</h6> {{ details.title }}
+        <h6>Company :-</h6><p> {{ details.company }}</p>
+        <h6>Experience :-</h6><p>{{ details.experience}}</p>
+        <h6>Salary :-</h6><p> {{ details.salary }}</p>
+        <h6>Location :-</h6><p> {{ details.location }}</p>
+        <h6>job_type :-</h6><p> {{ details.job_type }}</p>
+        <h6>Description :-</h6><p> {{ details.description }}</p>
+        <h6>Posted_on :-</h6><p> {{ details.posted_on }}</p>
+        <h6>Roles & Responsibillites:-</h6><p>{{ details.roles_and_responsibillities }}</p>
+
+        <!-- <input type="submit" class="btn btn-success" value="Apply">
+        <input type="submit" class="btn btn-danger" value="Back"> -->
+        <h1><a class="btn btn-warning" href="{% url 'submit' %}">Apply</a>
+        <a class="btn btn-danger" href="{% url 'jobpost' %}">Back</a></h1>
+            
+    </div>
+</div>
+
+{% endblock %}
